@@ -1,0 +1,13 @@
+/*import React from 'react';
+import SelectDropdown from './SelectDropdown'; // Adjust the import path as needed
+
+const App = () => {
+  return (
+    <div className="App">
+      <h1>Responsive Select Dropdown</h1>
+      <SelectDropdown />
+    </div>
+  );
+};
+
+export default App;*/
