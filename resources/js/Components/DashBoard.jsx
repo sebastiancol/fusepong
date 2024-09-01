@@ -1,62 +1,43 @@
-import React, { useState } from 'react';
-import { Inertia } from '@inertiajs/inertia';
 
-const DashBoard = ({ tickets }) => {
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+import  React,{ useState } from 'react';
+import '../../css/Dashboard2.css'; 
+import { Link } from '@inertiajs/react'
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        Inertia.post('/tickets', {
-            title,
-            description
-        });
-
-        setTitle('');
-        setDescription('');
-    };
-
-    return (
-        <div className="container">
-            <h1>Ticket Dashboard</h1>
-
-            <form onSubmit={handleSubmit} className="mb-4">
-                <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
-                    <input
-                        type="text"
-                        id="title"
-                        className="form-control"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <label htmlFor="description" className="form-label">Description</label>
-                    <textarea
-                        id="description"
-                        className="form-control"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
-                </div>
-
-                <button type="submit" className="btn btn-primary">Create Ticket</button>
-            </form>
-
-            <h2>All Tickets</h2>
-            <ul className="list-group">
-                {tickets.map(ticket => (
-                    <li key={ticket.id} className="list-group-item">
-                        <h5>{ticket.title}</h5>
-                        <p>{ticket.description}</p>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-}
-
-export default DashBoard
+export function DashBoard ()   {
+  return (
+    <div className="dashboard-container">
+      <aside className="sidebar">
+        <h2 className="sidebar-title">Dashboard</h2>
+        <ul className="sidebar-menu">
+          <li className="sidebar-item"><a href="/dashboard">Home</a></li>
+          <li className="sidebar-item"><a href="/usuarioget">Usuario</a></li>
+          <li className="sidebar-item"><a href="/usuarioedit">Perfil</a></li>
+          <li className="sidebar-item"><a href="/historial">Historial</a></li>
+          <li className="sidebar-item"><a href="/ticketget">Tickets</a></li>
+        </ul>
+      </aside>
+      <main className="main-content">
+        <header className="header">
+          <h1 className="header-title">Bienvenido (usuario)</h1>
+        </header>
+        <section className="content">
+          <div className="card">
+            <h3>Historia 1</h3>
+            <p>Creacion de interfaz del sistema</p>
+            <img src="" alt="historia1" />
+          </div>
+          <div className="card">
+            <h3>Historia 2</h3>
+            <p>Creacion de la base de datos</p>
+            <img src="" alt="historia1" />
+          </div>
+          <div className="card">
+            <h3>Historia 3</h3>
+            <p>Creacion de modulo de tickets</p>
+            <img src="" alt="historia1" />
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};

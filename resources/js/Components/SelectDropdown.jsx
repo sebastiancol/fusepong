@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import './SelectDropdown.css'; 
+import  React,{ useState } from 'react';
+import '../../css/SelectDropdown.css'; 
 
-export default function  SelectDropdown  () => {
+export function SelectDropdown  ()  {
   const [selectedOption, setSelectedOption] = useState('');
 
-  const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
+  const options = ['Empresa 1', 'Empresa 2', 'Empresa 3', 'Empresa 4'];
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
@@ -12,14 +12,14 @@ export default function  SelectDropdown  () => {
 
   return (
     <div className="select-dropdown-container">
-      <label htmlFor="options" className="select-label">Choose an option:</label>
+      <label htmlFor="options" className="select-label">Selecciona una opcion:</label>
       <select
         id="options"
         value={selectedOption}
         onChange={handleSelectChange}
         className="select-dropdown"
       >
-        <option value="" disabled>Select an option</option>
+        <option value="" disabled></option>
         {options.map((option, index) => (
           <option key={index} value={option}>{option}</option>
         ))}
@@ -27,5 +27,3 @@ export default function  SelectDropdown  () => {
     </div>
   );
 };
-
-//export default SelectDropdown;

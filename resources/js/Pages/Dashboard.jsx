@@ -1,17 +1,14 @@
-import SelectDropdown from '@/Components/SelectDropdown';
-import DashBoard from '@/Components/DashBoard';
+import React from 'react';
+import { DashBoard } from '../Components/DashBoard';
 
-export const Dashboard = () =>{
+const Dashboard = () =>{
 
     return (
-        
         <>
             <DashBoard/>
-            <SelectDropdown/>
+           
         </>
-            
-       
-    
     )
 }
 
+export default Dashboard;

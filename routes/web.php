@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\UserController;
@@ -16,30 +17,28 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Index', [
-        'message' => 'Hello, Inertia.js with React!',
-    ]);
+    return Inertia::render('Index');
 });
 
+
 Route::controller(UserController::class)->group( function(){
-
-    Route::get('userget',  'index')->name('user_get');
+    Route::inertia('userget', 'index')->name('user_get');
     Route::get('usercreate','create')->name('user_create');
-    Route::post('userstore','store')->name('user_store');
     Route::get('useredit/{id}', 'edit')->name('user_edit');
-    Route::post('userupdate/{id}', 'update')->name('user_update');
-    Route::get('userdelete/{id}','destroy')->name('user_delete');
-    Route::get('cancel','cancel')->name('cancel');
-   
-
 })->middleware('control');
 
 Route::get('/dashboard', function(){
-
-    return Inertia::render('Dashboard',[
-        
-    ]);
-
+    return Inertia::render('Dashboard');
 })->name('dashboard');
 
-//Route::post('/tickets', [TicketController::class, 'store'])->name('tickets.store');
+
+Route::controller(TicketController::class)->group( function(){
+    Route::inertia('ticketget','index')->name('ticket_get');
+    Route::inertia('ticketcreate','store')->name('ticket_create');
+    Route::post('ticketupdate/{id}', 'update')->name('ticket_update');
+    Route::get('ticketdelete/{id}','destroy')->name('ticket_delete');
+    Route::get('cancel','cancel')->name('cancel');
+});
+
+
+

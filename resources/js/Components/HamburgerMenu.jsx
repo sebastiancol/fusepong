@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './HamburgerMenu.css'; 
+import '../../css/HamburgerMenu.css'; 
 
-export const HamburgerMenu = () => {
+export function HamburgerMenu ()  {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {

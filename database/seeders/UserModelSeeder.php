@@ -14,7 +14,7 @@ class UserModelSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+        DB::table('user_models')->insert([
             'document' => '123456',
             'first_name' =>'andres',
             'last_name' =>'mora',
@@ -23,7 +23,7 @@ class UserModelSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('users')->insert([
+        DB::table('user_models')->insert([
             'document' => '1234567',
             'first_name' =>'carlos',
             'last_name' =>'morales',
@@ -32,7 +32,7 @@ class UserModelSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        DB::table('users')->insert([
+        DB::table('user_models')->insert([
             'document' => '12345678',
             'first_name' =>'andrea',
             'last_name' =>'peres',

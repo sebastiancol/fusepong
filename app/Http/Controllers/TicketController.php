@@ -3,27 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserModel;
+use App\Models\Ticket;
 use Inertia\Inertia;
 
-class UserController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('User',  UserModel::orderBy('document','desc')->paginate(10));
-        
+        return Inertia::render('Ticket',  Ticket::get());
     }
 
+  
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      */
-    public function create(Request $request )
+    public function store(Request $request)
     {
-
-        return Inertia::render('User',  UserModel::create($request->all()));
+        return Inertia::render('Ticket',  Ticket::create($request->all()));
         
     }
 
@@ -48,11 +47,10 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-     
-        $data = UserModel::findOrFail($id);
+        $data = Ticket::findOrFail($id);
         $data->update($request->all());
 
-        return Inertia::render('User',  $data);
+        return Inertia::render('Ticket',  $data);
         
     }
 
@@ -61,12 +59,15 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $data = UserModel::findOrFail($id);
+        
+        $data = Ticket::findOrFail($id);
         $data->delete();
 
-        return Inertia::render('User',  $data);
-
+        return Inertia::render('Ticket',  $data);
     }
 
-  
+    public function cancel()
+    {
+        return redirect()->route('Ticket');
+    }
 }
